@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B5A00562833E88A0008E1CE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A00552833E88A0008E1CE /* Persistence.swift */; };
 		3B5A61D22830C2CC001C446B /* RecipeDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A61D02830C2CC001C446B /* RecipeDataModel.xcdatamodeld */; };
 		3B5A61D82830C53D001C446B /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A61D42830C53D001C446B /* Ingredient+CoreDataClass.swift */; };
 		3B5A61D92830C53D001C446B /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A61D52830C53D001C446B /* Ingredient+CoreDataProperties.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B5A00552833E88A0008E1CE /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3B5A61D12830C2CC001C446B /* RecipeDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeDataModel.xcdatamodel; sourceTree = "<group>"; };
 		3B5A61D42830C53D001C446B /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3B5A61D52830C53D001C446B /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		831EE69325B0C77C00BACCDD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3B5A00552833E88A0008E1CE /* Persistence.swift */,
 				3B5A61D42830C53D001C446B /* Ingredient+CoreDataClass.swift */,
 				3B5A61D52830C53D001C446B /* Ingredient+CoreDataProperties.swift */,
 				3B5A61D62830C53D001C446B /* Recipe+CoreDataClass.swift */,
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B5A61DB2830C53D001C446B /* Recipe+CoreDataProperties.swift in Sources */,
+				3B5A00562833E88A0008E1CE /* Persistence.swift in Sources */,
 				831EE69D25B0C85E00BACCDD /* Recipe.swift in Sources */,
 				831EE6C625B0E0A200BACCDD /* RecipeDetailView.swift in Sources */,
 				3B5A61D22830C2CC001C446B /* RecipeDataModel.xcdatamodeld in Sources */,
