@@ -20,7 +20,9 @@ struct RecipeDetailView: View {
             VStack (alignment: .leading) {
                 
                 // MARK: Recipe Image
-                Image(recipe.image)
+                let image = UIImage(data: recipe.image ?? Data()) ?? UIImage()
+                
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                 
@@ -54,7 +56,7 @@ struct RecipeDetailView: View {
                         .font(Font.custom("Avenir Heavy", size: 16))
                         .padding([.bottom, .top], 5)
                     
-                    ForEach (recipe.ingredients) { item in
+                    ForEach (recipe.ingredients.allObjects as! [Ingredient]) { item in
                         
                         Text("• " + RecipeModel.getPortion(ingredient: item, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + item.name.lowercased())
                             .font(Font.custom("Avenir", size: 15))

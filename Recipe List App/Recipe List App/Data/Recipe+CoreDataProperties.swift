@@ -17,17 +17,17 @@ extension Recipe {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var featured: Bool
     @NSManaged public var image: Data?
-    @NSManaged public var prepTime: String?
-    @NSManaged public var cookTime: String?
-    @NSManaged public var totalTime: String?
-    @NSManaged public var summary: String?
-    @NSManaged public var servings: Int64
-    @NSManaged public var highlights: [String]?
-    @NSManaged public var directions: [String]?
-    @NSManaged public var ingredients: NSSet?
+    @NSManaged public var prepTime: String
+    @NSManaged public var cookTime: String
+    @NSManaged public var totalTime: String
+    @NSManaged public var summary: String
+    @NSManaged public var servings: Int
+    @NSManaged public var highlights: [String]
+    @NSManaged public var directions: [String]
+    @NSManaged public var ingredients: NSSet
 
 }
 

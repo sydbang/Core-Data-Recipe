@@ -17,9 +17,9 @@ extension Ingredient {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
-    @NSManaged public var num: Int64
-    @NSManaged public var denum: Int64
+    @NSManaged public var name: String
+    @NSManaged public var num: Int
+    @NSManaged public var denum: Int
     @NSManaged public var unit: String?
     @NSManaged public var recipe: Recipe?
 
