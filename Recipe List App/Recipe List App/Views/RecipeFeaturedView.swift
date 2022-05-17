@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecipeFeaturedView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @EnvironmentObject var model:RecipeModel
     @State var isDetailViewShowing = false
     @State var tabSelectionIndex = 0

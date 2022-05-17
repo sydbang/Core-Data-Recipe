@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecipeListView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @EnvironmentObject var model:RecipeModel
     
     var body: some View {
