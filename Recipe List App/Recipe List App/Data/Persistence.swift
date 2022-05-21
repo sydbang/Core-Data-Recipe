@@ -32,7 +32,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
     // To make sure that we only use PersistenceController.shared you could make init method private
     private init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "RecipeApp")
+        container = NSPersistentContainer(name: "Recipe Data Model") // this name must be the same as your xcdatamodelid name
         // creating a container with reference to the database
         
         if inMemory {
