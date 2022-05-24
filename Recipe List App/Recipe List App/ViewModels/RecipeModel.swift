@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 class RecipeModel: ObservableObject {
+    
+    // Reference to the managed object context
+    let managedObjectContext = PersistenceController.shared.container.viewContext
     
     @Published var recipes = [Recipe]()
     
@@ -30,11 +34,49 @@ class RecipeModel: ObservableObject {
         // Parse the local JSON File
         let localRecipes = DataService.getLocalData()
         // Create core data object
-        
+        for r in localRecipes {
+            // Create a core data object
+            let recipe = Recipe(context: managedObjectContext)
+            
+            // Set its properties
+            recipe.cookTime = r.cookTime
+            recipe.directions = r.directions
+            recipe.featured = r.featured
+            recipe.highlights = r.highlights
+            recipe.id = UUID()
+            recipe.image = UIImage(named: r.image)?.jpegData(compressionQuality: 1.0)
+            recipe.name = r.name
+            recipe.prepTime = r.prepTime
+            recipe.servings = r.servings
+            recipe.summary = r.description
+            recipe.totalTime = r.totalTime
+            
+            // Set the ingredients
+            for i in r.ingredients {
+                
+                // Create a core data ingredient object
+                let ingredient = Ingredient(context: managedObjectContext)
+                
+                ingredient.id = UUID()
+                ingredient.name = i.name
+                ingredient.unit = i.unit
+                ingredient.num = i.num ?? 1
+                ingredient.denum = i.denom ?? 1
+                
+                // Add this ingredient to the recipe
+                recipe.addToIngredients(ingredient)
+                
+            }
+            
+        }
         // Save into Core Data
-        
-        // Set local storage flag
-        
+        do {
+            try managedObjectContext.save()
+            // Set local storage flag
+            UserDefaults.standard.setValue(true, forKey: Constants.isDataPreloaded)
+        } catch {
+            // Couldn't save to core data
+        }
     }
     
     static func getPortion(ingredient:Ingredient, recipeServings:Int, targetServings:Int) -> String {
