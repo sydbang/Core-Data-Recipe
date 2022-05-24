@@ -12,9 +12,29 @@ class RecipeModel: ObservableObject {
     @Published var recipes = [Recipe]()
     
     init() {
+        // Check if we have preloaded the data into core data
+        checkLoadedData()
+    }
+    
+    func checkLoadedData() {
+        // Check local storage for the flag
+        let status = UserDefaults.standard.bool(forKey: Constants.isDataPreloaded)
         
-        // Create an instance of data service and get the data
-        self.recipes = DataService.getLocalData()
+        // If it's false, then we parse the local json and preload
+        if status == false {
+            preloadLocalData()
+        }
+    }
+    
+    func preloadLocalData() {
+        // Parse the local JSON File
+        let localRecipes = DataService.getLocalData()
+        // Create core data object
+        
+        // Save into Core Data
+        
+        // Set local storage flag
+        
     }
     
     static func getPortion(ingredient:Ingredient, recipeServings:Int, targetServings:Int) -> String {
