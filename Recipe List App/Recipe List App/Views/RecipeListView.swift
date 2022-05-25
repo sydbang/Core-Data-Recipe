@@ -11,7 +11,28 @@ struct RecipeListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @EnvironmentObject var model:RecipeModel
+//    @EnvironmentObject var model:RecipeModel
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]) private var recipes: FetchedResults<Recipe>
+    
+    @State private var filterBy = ""
+    
+    private var filteredRecipes: [Recipe] {
+        if filterBy.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            // No filter text, so return all recipes
+            return Array(recipes)
+        } else {
+            // Filter by the search term and return a subset of recipes which contains the search term in the name
+            return recipes.filter { r in
+//                if r.name.contains(filterBy) {
+//                    return true
+//                } else {
+//                    return false
+//                }
+                return r.name.contains(filterBy)
+            }
+        }
+    }
     
     var body: some View {
         
@@ -23,9 +44,12 @@ struct RecipeListView: View {
                     .padding(.top, 40)
                     .font(Font.custom("Avenir Heavy", size: 24))
                 
+                SearchBarView(filterBy: $filterBy)
+                    .padding([.trailing, . bottom])
+                
                 ScrollView {
                     LazyVStack (alignment: .leading) {
-                        ForEach(model.recipes) { r in
+                        ForEach(filteredRecipes) { r in
                             
                             NavigationLink(
                                 destination: RecipeDetailView(recipe:r),
@@ -65,6 +89,11 @@ struct RecipeListView: View {
             }
             .navigationBarHidden(true)
             .padding(.leading)
+            .onTapGesture {
+                // Resign first responder to dismiss keyboard when user taps somewhere else
+                // This method doesn't work when on Navigation View and interferes
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
         }
     }
 }
