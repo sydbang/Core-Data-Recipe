@@ -61,7 +61,7 @@ class RecipeModel: ObservableObject {
                 ingredient.name = i.name
                 ingredient.unit = i.unit
                 ingredient.num = i.num ?? 1
-                ingredient.denum = i.denom ?? 1
+                ingredient.denum = i.denum ?? 1
                 
                 // Add this ingredient to the recipe
                 recipe.addToIngredients(ingredient)

@@ -27,8 +27,10 @@ class RecipeJSON: Identifiable, Decodable {
 class IngredientJSON: Identifiable, Decodable {
     
     var id:UUID?
-    var name:String
+    var name:String = ""
     var num:Int?
-    var denom:Int?
+    var denum:Int?
     var unit:String?
+    
+    // can create init value but we will just assign "" to name
 }
