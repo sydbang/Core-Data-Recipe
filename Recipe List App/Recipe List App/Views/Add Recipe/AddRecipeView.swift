@@ -11,6 +11,9 @@ struct AddRecipeView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    // Tabselection
+    @Binding var tabSelection: Int
+    
     // Properties for recipe meta data
     @State private var name = ""
     @State private var summary = ""
@@ -47,7 +50,11 @@ struct AddRecipeView: View {
                     // Add recipe to the core data and clear the form
                     addRecipe()
                     
+                    // Clear the form
                     clear()
+                    
+                    // Navigate to the list
+                    tabSelection = Constants.listTab
                 }
             }
             // Scroll view
@@ -140,8 +147,6 @@ struct AddRecipeView: View {
         do {
             try viewContext.save()
             
-            // Switch the view to the list view
-            
         } catch {
             // Coundn't save the recipe
         }
@@ -159,6 +164,6 @@ struct AddRecipeView: View {
 
 struct AddRecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        AddRecipeView()
+        AddRecipeView(tabSelection: Binding.constant(Constants.addRecipeTab))
     }
 }
