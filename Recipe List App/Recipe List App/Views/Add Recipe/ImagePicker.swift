@@ -20,8 +20,11 @@ struct ImagePicker: UIViewControllerRepresentable {
         //imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary OR .photolibrary
         
         imagePickerController.delegate = context.coordinator // if no coordinator it makes one with makeCoordinator()
-        imagePickerController.sourceType = selectedSource
         
+        // Check that this source is available first
+        if UIImagePickerController.isSourceTypeAvailable(selectedSource) {
+            imagePickerController.sourceType = selectedSource
+        }
         return imagePickerController
     }
     

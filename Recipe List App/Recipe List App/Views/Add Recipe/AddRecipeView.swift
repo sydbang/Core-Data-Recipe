@@ -104,6 +104,7 @@ struct AddRecipeView: View {
         highlights = [String]()
         directions = [String]()
         ingredients = [IngredientJSON]()
+        placeHolderImage = Image("noImageAvailable")
     }
     
     func addRecipe() {
